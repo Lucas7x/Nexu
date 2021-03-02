@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1049456549024",
+    "project_id": "nexu-21564",
+    "storage_bucket": "nexu-21564.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049456549024:android:3582af368e12bb70e6bdc5",
+        "android_client_info": {
+          "package_name": "com.lucas7x.Nexu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049456549024-g74i983ahv9uhmsv84u114ah9e2pdo6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lucas7x.Nexu",
+            "certificate_hash": "1466c112f44d7f749b66ce19a550c476213a0d3f"
+          }
+        },
+        {
+          "client_id": "1049456549024-topu9iddadqklb622smngmchcicnbmup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIlCOBGOZnsOWAp8XFsZ20NYArUIRtdzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049456549024-topu9iddadqklb622smngmchcicnbmup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
