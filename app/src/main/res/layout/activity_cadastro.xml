@@ -12,7 +12,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/editLoginEmail"
+        app:layout_constraintBottom_toTopOf="@+id/editCadastroNome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,7 +20,29 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editLoginEmail"
+        android:id="@+id/editCadastroNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_caixa_texto"
+        android:ems="10"
+        android:hint="@string/nome"
+        android:inputType="text"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/vermelho"
+        app:layout_constraintBottom_toTopOf="@+id/editCadastroEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/editCadastroEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -36,13 +58,14 @@
         android:textColor="@color/white"
         android:textColorHighlight="@color/white"
         android:textColorHint="@color/vermelho"
-        app:layout_constraintBottom_toTopOf="@+id/editLoginSenha"
+        app:layout_constraintBottom_toTopOf="@+id/editCadastroSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/editCadastroNome" />
+
 
     <EditText
-        android:id="@+id/editLoginSenha"
+        android:id="@+id/editCadastroSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -57,13 +80,13 @@
         android:textColor="@color/white"
         android:textColorHighlight="@color/white"
         android:textColorHint="@color/vermelho"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLoginEntrar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCadastroEntrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editLoginEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/editCadastroEmail" />
 
     <Button
-        android:id="@+id/buttonLoginEntrar"
+        android:id="@+id/buttonCadastroEntrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -71,28 +94,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/background_botao"
-        android:text="@string/entrar"
-        app:layout_constraintBottom_toTopOf="@+id/textCadastrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editLoginSenha"
-        app:rippleColor="#673AB7" />
-
-    <TextView
-        android:id="@+id/textCadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="abrirCadastro"
-        android:text="@string/cadastre_se"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:text="@string/cadastrar"
         app:layout_constraintBottom_toTopOf="@+id/progressLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLoginEntrar" />
+        app:layout_constraintTop_toBottomOf="@+id/editCadastroSenha"
+        app:rippleColor="#673AB7" />
 
     <ProgressBar
         android:id="@+id/progressLogin"
@@ -104,5 +112,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCadastrar" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCadastroEntrar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
