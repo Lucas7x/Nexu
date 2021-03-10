@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
         inicializarComponentes();
         progressLogin.setVisibility(View.GONE);
+        verificarLogado();
     }
 
     public void inicializarComponentes() {
@@ -48,6 +49,16 @@ public class LoginActivity extends AppCompatActivity {
         progressLogin = findViewById(R.id.progressLogin);
 
         editEmail.requestFocus();
+    }
+
+    private void verificarLogado() {
+        autenticacao = ConfiguracaoFirebase.getFirebaseAuth();
+
+        if(autenticacao.getCurrentUser() != null) {
+            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
     }
 
     public void abrirCadastro(View view) {
