@@ -73,6 +73,7 @@
         android:layout_marginRight="24dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/background_botao"
+        android:onClick="validarLogin"
         android:text="@string/entrar"
         app:layout_constraintBottom_toTopOf="@+id/textCadastrar"
         app:layout_constraintEnd_toEndOf="parent"

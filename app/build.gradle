@@ -45,6 +45,10 @@ dependencies {
     implementation('com.google.firebase:firebase-storage')
     implementation('com.google.firebase:firebase-auth')
 
+    //dependencias bottom navigation
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+
+
 }
 
 apply plugin: 'com.android.application'
