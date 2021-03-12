@@ -49,6 +49,9 @@ dependencies {
     //dependencias bottom navigation
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 
+    //dependencias circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
 }
 
