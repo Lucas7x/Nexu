@@ -1,5 +1,10 @@
 package com.lucas7x.Nexu.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
+import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
+import com.lucas7x.Nexu.helper.HelperDB;
+
 public class Usuario {
 
     private String id;
@@ -35,6 +40,7 @@ public class Usuario {
         this.email = email;
     }
 
+    @Exclude
     public String getSenha() {
         return senha;
     }
@@ -43,11 +49,18 @@ public class Usuario {
         this.senha = senha;
     }
 
+    @Exclude
     public String getCaminhoFoto() {
         return caminhoFoto;
     }
 
     public void setCaminhoFoto(String caminhoFoto) {
         this.caminhoFoto = caminhoFoto;
+    }
+
+    public void salvar() {
+        DatabaseReference dbRef = ConfiguracaoFirebase.getFirebaseDatabase();
+        DatabaseReference usuariosRef = dbRef.child(HelperDB.USUARIOS).child(getId());
+        usuariosRef.setValue(this);
     }
 }
