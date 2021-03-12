@@ -6,7 +6,9 @@
     <string name="senha">Senha</string>
     <string name="email">Email</string>
     <string name="nome">Nome</string>
+    <string name="nome_do_usuario">Nome do usuário</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="numero_publicacoes">0</string>
+    <string name="salvar_alteracoes">Salvar alterações</string>
 </resources>
