@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.lucas7x.Nexu.R;
 import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
+import com.lucas7x.Nexu.helper.UsuarioFirebase;
 import com.lucas7x.Nexu.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -75,7 +76,11 @@ public class CadastroActivity extends AppCompatActivity {
 
             cadastrarUsuario(usuario);
         } else {
-            Toast.makeText(CadastroActivity.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    CadastroActivity.this,
+                    "Preencha todos os campos",
+                    Toast.LENGTH_SHORT
+            ).show();
         }
     }
 
@@ -96,11 +101,16 @@ public class CadastroActivity extends AppCompatActivity {
 
                              try {
                                  progressCadastro.setVisibility(View.GONE);
+
                                  //salvar dados no firebase
                                  String idUsuario = task.getResult().getUser().getUid();
                                  usuario.setId(idUsuario);
                                  usuario.salvar();
 
+                                 //salvar dados no profile do firebase
+                                 UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
+
+                                 //exibir mensagem e redirecionar para tela principal
                                  Toast.makeText(CadastroActivity.this, "Usuário cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
 
                                  Intent i = new Intent(getApplicationContext(), MainActivity.class);

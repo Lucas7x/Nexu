@@ -22,11 +22,12 @@ public class UsuarioFirebase {
 
         return idUsuario;
     }
+    */
 
     public static FirebaseUser getUsuarioAtual() {
         FirebaseAuth usuario = ConfiguracaoFirebase.getFirebaseAuth();
         return usuario.getCurrentUser();
-    }
+    } //fim getUsuarioAtual
 
     public static Usuario getDadosUsuarioLogado() {
         FirebaseUser firebaseUsuario = getUsuarioAtual();
@@ -44,6 +45,7 @@ public class UsuarioFirebase {
 
     }
 
+    /*
     public static boolean atualizarFotoUsuario(Uri url) {
         try {
 
@@ -72,9 +74,10 @@ public class UsuarioFirebase {
 
     } //fim atualizarFotoUsuario
 
+     */
     public static boolean atualizarNomeUsuario(String nome) {
         try {
-
+            //usuario logado no app
             FirebaseUser usuario = getUsuarioAtual();
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(nome)
@@ -100,5 +103,5 @@ public class UsuarioFirebase {
 
     } //fim atualizarNomeUsuario
 
-     */
+
 }
