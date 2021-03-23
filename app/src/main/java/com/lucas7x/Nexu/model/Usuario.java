@@ -5,6 +5,9 @@ import com.google.firebase.database.Exclude;
 import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
 import com.lucas7x.Nexu.helper.HelperDB;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Usuario {
 
     private String id;
@@ -62,5 +65,23 @@ public class Usuario {
         DatabaseReference dbRef = ConfiguracaoFirebase.getFirebaseDatabase();
         DatabaseReference usuariosRef = dbRef.child(HelperDB.USUARIOS).child(getId());
         usuariosRef.setValue(this);
+    }
+
+    public void atualizar() {
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
+        DatabaseReference usuariosRef = firebaseRef.child(HelperDB.USUARIOS).child(getId());
+
+        Map<String,Object> valoresUsuario = converterParaMap();
+        usuariosRef.updateChildren(valoresUsuario);
+    }
+
+    public Map<String,Object> converterParaMap() {
+        HashMap<String, Object> usuarioMap = new HashMap<>();
+        usuarioMap.put(HelperDB.ID_US, getId());
+        usuarioMap.put(HelperDB.NOME_US, getNome());
+        usuarioMap.put(HelperDB.EMAIL_US, getEmail());
+        usuarioMap.put(HelperDB.CAMINHO_FOTO_US, getCaminhoFoto());
+
+        return usuarioMap;
     }
 }

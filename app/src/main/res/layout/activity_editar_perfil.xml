@@ -18,9 +18,31 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageFotoEditarPerfil"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:src="@drawable/avatar" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/buttonCameraEditarPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_camera_preto"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/buttonGaleriaEditarPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_galeria_preto"
+                tools:ignore="VectorDrawableCompat" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textAlterarFoto"
@@ -42,12 +64,14 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_perfil_preto"
                 android:drawableTint="@android:color/darker_gray"
-                android:hint="@string/nome_do_usuario" />
+                android:hint="@string/nome_do_usuario"
+                android:background="@color/cinza_medio"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editEmailEditarPerfil"
@@ -55,13 +79,15 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_email_preto"
                 android:drawableTint="@android:color/darker_gray"
-                android:hint="@string/email" />
+                android:hint="@string/email"
+                android:background="@color/cinza_medio" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonSalvarEditarPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="salvarAlteracoes"
             android:text="@string/salvar_alteracoes"
             android:textColor="@color/black" />
 

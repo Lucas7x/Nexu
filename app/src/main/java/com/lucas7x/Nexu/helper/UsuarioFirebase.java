@@ -29,12 +29,14 @@ public class UsuarioFirebase {
         return usuario.getCurrentUser();
     } //fim getUsuarioAtual
 
+
     public static Usuario getDadosUsuarioLogado() {
         FirebaseUser firebaseUsuario = getUsuarioAtual();
 
         Usuario usuario = new Usuario();
         usuario.setEmail(firebaseUsuario.getEmail());
         usuario.setNome(firebaseUsuario.getDisplayName());
+        usuario.setId(firebaseUsuario.getUid());
         if(firebaseUsuario.getPhotoUrl() == null) {
             usuario.setCaminhoFoto("");
         } else {
@@ -45,11 +47,18 @@ public class UsuarioFirebase {
 
     }
 
-    /*
+    public static String getIdUsuario() {
+        return  getUsuarioAtual().getUid();
+    } //fim getIdUsuario
+
+
+
     public static boolean atualizarFotoUsuario(Uri url) {
         try {
-
+            //usuario logado no app
             FirebaseUser usuario = getUsuarioAtual();
+
+            //Configurar objeto para alteração do perfil
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setPhotoUri(url)
                     .build();
@@ -74,7 +83,7 @@ public class UsuarioFirebase {
 
     } //fim atualizarFotoUsuario
 
-     */
+
     public static boolean atualizarNomeUsuario(String nome) {
         try {
             //usuario logado no app
@@ -102,6 +111,7 @@ public class UsuarioFirebase {
         }
 
     } //fim atualizarNomeUsuario
+
 
 
 }
