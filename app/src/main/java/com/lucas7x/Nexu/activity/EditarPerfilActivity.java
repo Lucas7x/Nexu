@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -89,6 +90,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
         editNomePerfil.setText(usuarioPerfil.getDisplayName());
         editEmailPerfil.setText(usuarioPerfil.getEmail());
+
+        //pega imagem do perfil e mostra no imageview
+        Uri url = usuarioPerfil.getPhotoUrl();
+        if(url != null) {
+            Glide.with(EditarPerfilActivity.this)
+                    .load(url)
+                    .into(imageFotoEditarPerfil);
+        } else {
+            imageFotoEditarPerfil.setImageResource(R.drawable.avatar);
+        }
 
         buttonGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
