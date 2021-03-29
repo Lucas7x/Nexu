@@ -12,6 +12,7 @@ public class Usuario {
 
     private String id;
     private String nome;
+    private String nomePesquisa;
     private String email;
     private String senha;
     private String caminhoFoto;
@@ -35,6 +36,10 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public String getNomePesquisa() { return nomePesquisa; }
+
+    public void setNomePesquisa(String nomePesquisa) { this.nomePesquisa = nomePesquisa; }
+
     public String getEmail() {
         return email;
     }
@@ -51,8 +56,7 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    @Exclude
+    
     public String getCaminhoFoto() {
         return caminhoFoto;
     }
@@ -79,6 +83,7 @@ public class Usuario {
         HashMap<String, Object> usuarioMap = new HashMap<>();
         usuarioMap.put(HelperDB.ID_US, getId());
         usuarioMap.put(HelperDB.NOME_US, getNome());
+        usuarioMap.put(HelperDB.NOME_PESQUISA_US, getNomePesquisa());
         usuarioMap.put(HelperDB.EMAIL_US, getEmail());
         usuarioMap.put(HelperDB.CAMINHO_FOTO_US, getCaminhoFoto());
 

@@ -105,6 +105,7 @@ public class CadastroActivity extends AppCompatActivity {
                                  //salvar dados no firebase
                                  String idUsuario = task.getResult().getUser().getUid();
                                  usuario.setId(idUsuario);
+                                 usuario.setNomePesquisa(usuario.getNome().toUpperCase());
                                  usuario.salvar();
 
                                  //salvar dados no profile do firebase

@@ -12,4 +12,5 @@
     <string name="numero_publicacoes">0</string>
     <string name="salvar_alteracoes">Salvar alterações</string>
     <string name="sucesso_alteracao">Dados alterados com sucesso</string>
+    <string name="buscar_usuarios">Buscar usuários</string>
 </resources>

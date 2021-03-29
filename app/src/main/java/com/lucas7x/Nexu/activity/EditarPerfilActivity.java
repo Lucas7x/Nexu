@@ -164,6 +164,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         //atualizar nome no banco de dados
         usuarioLogado.setNome(nomeAtualizado);
+        usuarioLogado.setNomePesquisa(nomeAtualizado.toUpperCase());
         usuarioLogado.atualizar();
 
         Toast.makeText(
@@ -267,11 +268,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
                                     atualizarFotoUsuario(url);
                                 }
                             });
-
                         }
                     });
-
-
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -319,7 +317,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         //atualizar foto no firebase
         usuarioLogado.setCaminhoFoto(url.toString());
+        usuarioLogado.setNomePesquisa(usuarioLogado.getNome().toUpperCase());
         usuarioLogado.atualizar();
+
 
         Toast.makeText(
                 EditarPerfilActivity.this,
