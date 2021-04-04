@@ -13,4 +13,5 @@
     <string name="salvar_alteracoes">Salvar alterações</string>
     <string name="sucesso_alteracao">Dados alterados com sucesso</string>
     <string name="buscar_usuarios">Buscar usuários</string>
+    <string name="seguir">Seguir</string>
 </resources>

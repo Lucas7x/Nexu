@@ -17,9 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseUser;
 import com.lucas7x.Nexu.R;
-import com.lucas7x.Nexu.activity.CadastroActivity;
 import com.lucas7x.Nexu.activity.EditarPerfilActivity;
-import com.lucas7x.Nexu.activity.LoginActivity;
 import com.lucas7x.Nexu.helper.UsuarioFirebase;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -66,7 +64,7 @@ public class PerfilFragment extends Fragment {
         progressPerfil = view.findViewById(R.id.progressPerfil);
         imagePerfil = view.findViewById(R.id.imageFotoPerfil);
         gridViewPerfil = view.findViewById(R.id.gridViewPerfil);
-        buttonPerfilEditar = view.findViewById(R.id.buttonPerfilEditar);
+        buttonPerfilEditar = view.findViewById(R.id.buttonPerfilAcao);
         textPublicacoes = view.findViewById(R.id.textPublicacoesPerfil);
         textSeguidores = view.findViewById(R.id.textSeguidoresPerfil);
         textSeguindo = view.findViewById(R.id.textSeguindoPerfil);

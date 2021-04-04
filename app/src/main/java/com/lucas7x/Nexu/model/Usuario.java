@@ -5,10 +5,11 @@ import com.google.firebase.database.Exclude;
 import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
 import com.lucas7x.Nexu.helper.HelperDB;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String id;
     private String nome;
@@ -56,7 +57,7 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
     public String getCaminhoFoto() {
         return caminhoFoto;
     }
