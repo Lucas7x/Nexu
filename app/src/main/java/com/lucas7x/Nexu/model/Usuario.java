@@ -17,6 +17,9 @@ public class Usuario implements Serializable {
     private String email;
     private String senha;
     private String caminhoFoto;
+    private int seguidores = 0;
+    private int seguindo = 0;
+    private int publicacoes = 0;
 
     public Usuario() {
     }
@@ -66,6 +69,18 @@ public class Usuario implements Serializable {
         this.caminhoFoto = caminhoFoto;
     }
 
+    public int getSeguidores() { return seguidores; }
+
+    public void setSeguidores(int seguidores) { this.seguidores = seguidores; }
+
+    public int getSeguindo() { return seguindo; }
+
+    public void setSeguindo(int seguindo) { this.seguindo = seguindo; }
+
+    public int getPublicacoes() { return publicacoes; }
+
+    public void setPublicacoes(int publicacoes) { this.publicacoes = publicacoes; }
+
     public void salvar() {
         DatabaseReference dbRef = ConfiguracaoFirebase.getFirebaseDatabase();
         DatabaseReference usuariosRef = dbRef.child(HelperDB.USUARIOS).child(getId());
@@ -87,6 +102,9 @@ public class Usuario implements Serializable {
         usuarioMap.put(HelperDB.NOME_PESQUISA_US, getNomePesquisa());
         usuarioMap.put(HelperDB.EMAIL_US, getEmail());
         usuarioMap.put(HelperDB.CAMINHO_FOTO_US, getCaminhoFoto());
+        usuarioMap.put(HelperDB.SEGUIDORES, getSeguidores());
+        usuarioMap.put(HelperDB.SEGUINDO, getSeguindo());
+        usuarioMap.put(HelperDB.PUBLICACOES, getPublicacoes());
 
         return usuarioMap;
     }
