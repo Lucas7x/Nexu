@@ -27,6 +27,7 @@ import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
 import com.lucas7x.Nexu.helper.HelperDB;
 import com.lucas7x.Nexu.helper.HelperNavegacao;
 import com.lucas7x.Nexu.helper.RecyclerItemClickListener;
+import com.lucas7x.Nexu.helper.UsuarioFirebase;
 import com.lucas7x.Nexu.model.Usuario;
 
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ import java.util.List;
 
 public class PesquisaFragment extends Fragment {
 
+
+    private String idUsuarioLogado;
 
     private SearchView searchViewPesquisa;
     private RecyclerView recyclerPesquisa;
@@ -67,6 +70,7 @@ public class PesquisaFragment extends Fragment {
         //configurações iniciais
         listaUsuarios = new ArrayList<>();
         usuariosRef = ConfiguracaoFirebase.getFirebaseDatabase().child(HelperDB.USUARIOS);
+        idUsuarioLogado = UsuarioFirebase.getIdUsuario();
 
         //configurar o recycler view
         recyclerPesquisa.setHasFixedSize(true);
@@ -135,7 +139,14 @@ public class PesquisaFragment extends Fragment {
                     listaUsuarios.clear();
 
                     for (DataSnapshot ds: snapshot.getChildren()) {
-                        listaUsuarios.add(ds.getValue(Usuario.class));
+
+                        //verifica se é o usuário logado e, caso seja, não o adiciona na lista
+                        Usuario usuario = ds.getValue(Usuario.class);
+
+                        if(!idUsuarioLogado.equals(usuario.getId())) {
+                            listaUsuarios.add(ds.getValue(Usuario.class));
+                        }
+
                     }
 
                     adapterPesquisa.notifyDataSetChanged();
