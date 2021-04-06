@@ -8,10 +8,12 @@
     <string name="nome">Nome</string>
     <string name="nome_do_usuario">Nome do usuário</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="numero_publicacoes">0</string>
-    <string name="salvar_alteracoes">Salvar alterações</string>
-    <string name="sucesso_alteracao">Dados alterados com sucesso</string>
-    <string name="buscar_usuarios">Buscar usuários</string>
-    <string name="seguir">Seguir</string>
+    <string name="hello_blank_fragment">    Hello blank fragment        </string>
+    <string name="numero_publicacoes">      0                           </string>
+    <string name="salvar_alteracoes">       Salvar alterações           </string>
+    <string name="sucesso_alteracao">       Dados alterados com sucesso </string>
+    <string name="buscar_usuarios">         Buscar usuários             </string>
+    <string name="seguir">                  Seguir                      </string>
+    <string name="seguindo">                Seguindo                    </string>
+    <string name="carregando">              Carregando                  </string>
 </resources>
