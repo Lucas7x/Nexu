@@ -16,4 +16,6 @@
     <string name="seguir">                  Seguir                      </string>
     <string name="seguindo">                Seguindo                    </string>
     <string name="carregando">              Carregando                  </string>
+    <string name="nao_foi_possivel_abrir_a_galeria">Não foi possível abrir a galeria</string>
+    <string name="nao_foi_possivel_abrir_a_camera">Não foi possivel abrir a câmera</string>
 </resources>

@@ -111,7 +111,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(
                             EditarPerfilActivity.this,
-                            "Não conseguiu abrir a galeria",
+                            R.string.nao_foi_possivel_abrir_a_galeria,
                             Toast.LENGTH_SHORT
                     ).show();
                 }
@@ -128,7 +128,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(
                             EditarPerfilActivity.this,
-                            "Não conseguiu abrir a câmera",
+                            R.string.nao_foi_possivel_abrir_a_camera,
                             Toast.LENGTH_SHORT
                     ).show();
                 }
