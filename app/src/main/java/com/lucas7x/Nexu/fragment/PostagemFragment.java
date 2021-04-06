@@ -2,21 +2,27 @@ package com.lucas7x.Nexu.fragment;
 
 import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.lucas7x.Nexu.R;
-import com.lucas7x.Nexu.activity.EditarPerfilActivity;
+import com.lucas7x.Nexu.activity.FiltroActivity;
+import com.lucas7x.Nexu.helper.HelperNavegacao;
 import com.lucas7x.Nexu.helper.Permissao;
+
+import java.io.ByteArrayOutputStream;
 
 
 public class PostagemFragment extends Fragment {
@@ -104,5 +110,59 @@ public class PostagemFragment extends Fragment {
 
 
         return view;
+    } //fim do onCreateView
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == getActivity().RESULT_OK) {
+            Bitmap img = null;
+
+            try {
+
+                //pega a imagem de acordo com o método selecionado
+                switch (requestCode) {
+
+                    case SELECAO_CAMERA:
+                        img = (Bitmap) data.getExtras().get("data");
+                        break;
+
+                    case SELECAO_GALERIA:
+                        Uri localImagemSelecionada = data.getData();
+
+                        if (android.os.Build.VERSION.SDK_INT >= 29) {
+                            ImageDecoder.Source imageDecoder = ImageDecoder.createSource(getActivity().getContentResolver(), localImagemSelecionada);
+                            img = ImageDecoder.decodeBitmap(imageDecoder);
+                            //Log.i("SDK", ">= 29");
+                        } else {
+                            img = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), localImagemSelecionada);
+                        }
+
+                        break;
+
+                }
+
+                //caso a imagem tenha sido selecionada
+                if(img != null) {
+
+                    //converter imagem em byteArray
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    img.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+                    byte[] dadosImagem = baos.toByteArray();
+
+                    //envia imagem escolhida para aplicação de filtros
+                    Intent i = new Intent(getActivity(), FiltroActivity.class);
+                    i.putExtra(HelperNavegacao.FOTO_PARA_POSTAGEM, dadosImagem);
+                    startActivity(i);
+
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

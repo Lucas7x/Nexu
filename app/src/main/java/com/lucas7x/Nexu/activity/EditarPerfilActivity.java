@@ -211,13 +211,15 @@ public class EditarPerfilActivity extends AppCompatActivity {
             Bitmap img = null;
 
             try {
-                //seleção apenas da galeria
+
+                //pega a imagem de acordo com o método selecionado
                 switch (requestCode) {
                     case SELECAO_CAMERA:
                         img = (Bitmap) data.getExtras().get("data");
                         break;
                     case SELECAO_GALERIA:
                         Uri localImagemSelecionada = data.getData();
+
                         if (android.os.Build.VERSION.SDK_INT >= 29) {
                             ImageDecoder.Source imageDecoder = ImageDecoder.createSource(getContentResolver(), localImagemSelecionada);
                             img = ImageDecoder.decodeBitmap(imageDecoder);
@@ -235,7 +237,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                     //mostra imagem na tela
                     imageFotoEditarPerfil.setImageBitmap(img);
 
-                    //recuperar dados da imagem para o firebase
+                    ////converter imagem em byteArray para enviar ao firebase
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     img.compress(Bitmap.CompressFormat.JPEG, 70, baos);
                     byte[] dadosImagem = baos.toByteArray();
