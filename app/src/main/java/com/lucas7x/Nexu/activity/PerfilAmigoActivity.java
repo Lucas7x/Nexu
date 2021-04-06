@@ -142,6 +142,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
                             });
                         }
                     }
+                    
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
