@@ -53,6 +53,10 @@ dependencies {
     //dependencias circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //dependencias zomato (biblioteca para aplicar filtros na imagem
+    //implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'info.androidhive:imagefilters:1.0.7'
+
 
 }
 
