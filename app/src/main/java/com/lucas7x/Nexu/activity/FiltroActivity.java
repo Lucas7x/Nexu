@@ -136,7 +136,6 @@ public class FiltroActivity extends AppCompatActivity {
             recuperarFiltros();
 
 
-
         }
     } //fim do onCreate
 
