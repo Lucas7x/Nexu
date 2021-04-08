@@ -169,7 +169,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
             }
         });
 
-    }
+    } //fim do carregarFotosPublicacao
 
 
     private void recuperarDadosUsuarioLogado() {
