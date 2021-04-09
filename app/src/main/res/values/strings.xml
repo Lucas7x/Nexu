@@ -21,4 +21,9 @@
     <string name="filtros">Filtros</string>
     <string name="publicar">Publicar</string>
     <string name="nome_filtro">Nome filtro</string>
+    <string name="perfil">Perfil</string>
+    <string name="visualizar_publicacao">Visualizar publicacao</string>
+    <string name="descricao">Descrição</string>
+    <string name="recuperando_dados">Recuperando dados, aguarde!</string>
+    <string name="salvando_publicacao">Salvando publicação</string>
 </resources>

@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -40,6 +42,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
     private String idUsuarioLogado;
     private Usuario usuarioSelecionado;
     private Usuario usuarioLogado;
+    private List<Publicacao> publicacoes;
 
     private DatabaseReference firebaseRef;
     private DatabaseReference usuarioLogadoRef;
@@ -73,7 +76,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
 
         //configurar a toolbar
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
-        toolbar.setTitle("Perfil");
+        toolbar.setTitle(R.string.perfil);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -114,6 +117,21 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         //carregar as fotos das publicações de um usuário
         carregarFotosPublicacao();
 
+        //abrir foto quando clicar na miniatura
+        gridViewPerfil.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Publicacao publicacao = publicacoes.get(position);
+                Intent i = new Intent(getApplicationContext(), VisualizarPublicacaoActivity.class);
+                i.putExtra(HelperNavegacao.AMIGO_SELECIONADO, usuarioSelecionado);
+                i.putExtra(HelperNavegacao.PUBLICACAO_SELECIONADA, publicacao);
+
+                startActivity(i);
+
+            }
+        });
+
 
     } // fim do onCreate
 
@@ -142,7 +160,9 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         publicacoesUsuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                
+
+                publicacoes = new ArrayList<>();
+
                 //configurar tamanho do grid
                 int tamanhoGrid = getResources().getDisplayMetrics().widthPixels;
                 int tamanhoImagem = tamanhoGrid / 3;
@@ -151,6 +171,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
                 List<String> urlFotos = new ArrayList<>();
                 for(DataSnapshot ds: snapshot.getChildren()) {
                     Publicacao publicacao = ds.getValue(Publicacao.class);
+                    publicacoes.add(publicacao);
                     urlFotos.add(publicacao.getCaminhoFoto());
                 }
 

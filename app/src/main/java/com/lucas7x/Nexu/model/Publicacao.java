@@ -4,7 +4,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
 import com.lucas7x.Nexu.helper.HelperDB;
 
-public class Publicacao {
+import java.io.Serializable;
+
+public class Publicacao implements Serializable {
 
     /*
     * Modelo de publicação
