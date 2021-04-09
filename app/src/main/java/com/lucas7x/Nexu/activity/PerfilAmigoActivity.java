@@ -49,6 +49,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
     private DatabaseReference usuariosRef;
     private DatabaseReference usuarioAmigoRef;
     private DatabaseReference seguindoRef;
+    private DatabaseReference seguidoresRef;
     private ValueEventListener valueEventListenerPerfilAmigo;
     private DatabaseReference publicacoesUsuarioRef;
 
@@ -69,6 +70,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
         usuariosRef = firebaseRef.child(HelperDB.USUARIOS);
         seguindoRef = firebaseRef.child(HelperDB.SEGUINDO);
+        seguidoresRef = firebaseRef.child(HelperDB.SEGUIDORES);
         idUsuarioLogado = UsuarioFirebase.getIdUsuario();
 
         //inicializar os componentes
@@ -215,7 +217,6 @@ public class PerfilAmigoActivity extends AppCompatActivity {
     }
 
 
-
     private void verificaSeguindoUsuarioAmigo() {
         DatabaseReference seguidorRef = seguindoRef
                 .child(idUsuarioLogado)
@@ -252,6 +253,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         );
     } //fim do verificaSeguindoUsuarioAmigo
 
+
     private void configurarBotaoSeguir(boolean segueUsuario) {
         if(segueUsuario) {
             buttonSeguir.setText(R.string.seguindo);
@@ -260,16 +262,40 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         }
     } //fim do configurarBotaoSeguir
 
+
     private void salvarSeguidor(Usuario uLogado, Usuario uAmigo) {
+
+        /*
+        usuario X começa a seguir amigo Y
+            novo seguindo X -> Y
+            novo seguidor Y -> X
+         */
+
+        //salva o amigo na lista de seguindo do usuario
         HashMap<String, Object> dadosAmigo = new HashMap<>();
         dadosAmigo.put(HelperDB.NOME_US, uAmigo.getNome());
         dadosAmigo.put(HelperDB.CAMINHO_FOTO_US, uAmigo.getCaminhoFoto());
 
-        DatabaseReference segueRef = seguindoRef
+
+        DatabaseReference seguindo = seguindoRef
                 .child(uLogado.getId())
                 .child(uAmigo.getId());
+        seguindo.setValue(dadosAmigo);
 
-        segueRef.setValue(dadosAmigo);
+
+        //salva o usuario logado como seguidor do amigo
+        HashMap<String, Object> dadosLogado = new HashMap<>();
+        dadosLogado.put(HelperDB.NOME_US, uLogado.getNome());
+        dadosLogado.put(HelperDB.CAMINHO_FOTO_US, uLogado.getCaminhoFoto());
+
+        //salvar seguidor
+        DatabaseReference seguidor = seguidoresRef
+                .child(uAmigo.getId())
+                .child(uLogado.getId());
+        seguidor.setValue(dadosLogado);
+
+
+
 
         //alterar texto e ação do botão para seguindo
         configurarBotaoSeguir(true);
@@ -281,10 +307,10 @@ public class PerfilAmigoActivity extends AppCompatActivity {
 
 
         //incrementar seguindo do usuário logado
-        int seguindo = uLogado.getSeguindo() + 1;
+        int qtdSeguindoLogado = uLogado.getSeguindo() + 1;
 
         HashMap<String, Object> dadosSeguindo = new HashMap<>();
-        dadosSeguindo.put(HelperDB.SEGUINDO, seguindo);
+        dadosSeguindo.put(HelperDB.SEGUINDO, qtdSeguindoLogado);
 
         DatabaseReference usuarioSeguindo = usuariosRef
                 .child(uLogado.getId());
@@ -293,10 +319,10 @@ public class PerfilAmigoActivity extends AppCompatActivity {
 
 
         //incrementar seguidores do amigo
-        int seguidores = uAmigo.getSeguidores() + 1;
+        int qtdSeguidorAmigo = uAmigo.getSeguidores() + 1;
 
         HashMap<String, Object> dadosSeguidores = new HashMap<>();
-        dadosSeguidores.put(HelperDB.SEGUIDORES, seguidores);
+        dadosSeguidores.put(HelperDB.SEGUIDORES, qtdSeguidorAmigo);
 
         DatabaseReference usuarioSeguido = usuariosRef
                 .child(uAmigo.getId());
@@ -304,6 +330,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
 
 
     } //fim do salvarSeguidor
+
 
     private void inicializarComponentes() {
         buttonSeguir = findViewById(R.id.buttonPerfilAcao);
