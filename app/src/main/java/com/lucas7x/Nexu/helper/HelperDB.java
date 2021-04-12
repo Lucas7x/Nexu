@@ -10,6 +10,7 @@ public class HelperDB {
     public static final String PUBLICACOES = "publicacoes";
     public static final String FEEDS = "feeds";
     public static final String CURTIDAS = "curtidas";
+    public static final String COMENTARIOS = "comentarios";
 
 
     //referentes aos usuarios
@@ -33,6 +34,13 @@ public class HelperDB {
     public static final String QTD_CURTIDAS_CTD = "qtdCurtidas";
     public static final String CAMINHO_FOTO_CTD = "caminhoFoto";
     public static final String NOME_USUARIO_CTD = "nomeUsuario";
+
+    //referentes aos comentarios
+    public static final String ID_COMENTARIO_CM = "idComentario";
+    public static final String ID_PUBLICACAO_CM = "idComentario";
+    public static final String ID_USUARIO_CM = "idComentario";
+    public static final String CAMINHO_FOTO_USUARIO_CM = "idComentario";
+    public static final String COMENTARIO_CM = "idComentario";
 
 
 }

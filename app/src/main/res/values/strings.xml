@@ -26,4 +26,9 @@
     <string name="descricao">Descrição</string>
     <string name="recuperando_dados">Recuperando dados, aguarde!</string>
     <string name="salvando_publicacao">Salvando publicação</string>
+    <string name="escreva_um_comentario">Escreva um comentário</string>
+    <string name="comentarios">Comentários</string>
+    <string name="insira_um_comentario">Insira um comentario antes de salvar.</string>
+    <string name="comentario_salvo">Comentário salvo com sucesso</string>
+    <string name="erro_salvar_comentario">Erro ao salvar o comentário</string>
 </resources>

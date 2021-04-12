@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nexu">
-        <activity android:name=".activity.VisualizarPublicacaoActivity"></activity>
+        <activity android:name=".activity.ComentariosActivity"></activity>
+        <activity android:name=".activity.VisualizarPublicacaoActivity" />
         <activity android:name=".activity.FiltroActivity" />
         <activity android:name=".activity.PerfilAmigoActivity" />
         <activity

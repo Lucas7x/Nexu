@@ -1,6 +1,7 @@
 package com.lucas7x.Nexu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.lucas7x.Nexu.R;
+import com.lucas7x.Nexu.activity.ComentariosActivity;
 import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
 import com.lucas7x.Nexu.helper.HelperDB;
 import com.lucas7x.Nexu.helper.UsuarioFirebase;
@@ -99,8 +101,18 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder>{
         }
 
         holder.nome.setText(feed.getNomeUsuario());
-        //holder.nome.setText(feed.getDescricao());
         holder.descricao.setText(feed.getDescricao());
+
+        //adicionar evento de clique nos comentarios
+        holder.visualizarComentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ComentariosActivity.class);
+                i.putExtra(HelperDB.ID_PUBLICACAO_CTD, feed.getIdPublicacao());
+                context.startActivity(i);
+            }
+        });
+
 
         /*
         Estrutura de curtidas
