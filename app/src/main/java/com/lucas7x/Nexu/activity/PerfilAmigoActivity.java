@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -58,6 +59,8 @@ public class PerfilAmigoActivity extends AppCompatActivity {
     private TextView textPublicacoes, textSeguidores, textSeguindo;
     private GridView gridViewPerfil;
     private AdapterGrid adapterGrid;
+
+    private ProgressBar progressPerfilAmigo;
 
 
 
@@ -340,6 +343,8 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         textSeguindo = findViewById(R.id.textSeguindoPerfil);
         textPublicacoes = findViewById(R.id.textPublicacoesPerfil);
         gridViewPerfil = findViewById(R.id.gridViewPerfil);
+        progressPerfilAmigo = findViewById(R.id.progressPerfil);
+        progressPerfilAmigo.setVisibility(View.GONE);
     }
 
     @Override

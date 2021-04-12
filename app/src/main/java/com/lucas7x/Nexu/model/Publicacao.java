@@ -1,10 +1,14 @@
 package com.lucas7x.Nexu.model;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.lucas7x.Nexu.helper.ConfiguracaoFirebase;
 import com.lucas7x.Nexu.helper.HelperDB;
+import com.lucas7x.Nexu.helper.UsuarioFirebase;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Publicacao implements Serializable {
 
@@ -31,14 +35,44 @@ public class Publicacao implements Serializable {
         setIdPublicacao(idPub);
     }
 
-    public boolean salvar() {
-        DatabaseReference dbRef = ConfiguracaoFirebase.getFirebaseDatabase();
-        DatabaseReference publicacoesRef = dbRef
-                .child(HelperDB.PUBLICACOES)
-                .child(getIdUsuario())
-                .child(getIdPublicacao());
-        publicacoesRef.setValue(this);
+    public boolean salvar(DataSnapshot seguidoresSnapshot) {
 
+        Map objeto = new HashMap();
+        Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
+        DatabaseReference dbRef = ConfiguracaoFirebase.getFirebaseDatabase();
+
+        //referencia para publicacao
+        String caminhoPublicacao = "/" + getIdUsuario() + "/" + getIdPublicacao();
+        objeto.put("/" + HelperDB.PUBLICACOES + caminhoPublicacao, this);
+
+        //referencia para feed
+        for(DataSnapshot seguidores: seguidoresSnapshot.getChildren()) {
+            /*
+            estrutura feed
+            feed
+                id_seguidor
+                    id_publicacao
+                        publicacao
+             */
+
+            String idSeguidor = seguidores.getKey();
+
+            //monta um objeto publicacao para salvar no feed dos seguidores
+            HashMap<String, Object> dadosPublicacao = new HashMap<>();
+            dadosPublicacao.put(HelperDB.ID_PB, getIdPublicacao());
+            dadosPublicacao.put(HelperDB.DESCRICAO_PB, getDescricao());
+            dadosPublicacao.put(HelperDB.CAMINHO_FOTO_PB, getCaminhoFoto());
+
+            dadosPublicacao.put(HelperDB.NOME_USUARIO_PB, usuarioLogado.getNome());
+            dadosPublicacao.put(HelperDB.FOTO_USUARIO_PB, usuarioLogado.getCaminhoFoto());
+
+            String caminhoFeed = "/" + idSeguidor + "/" + getIdPublicacao();
+            objeto.put("/" + HelperDB.FEEDS + caminhoFeed, dadosPublicacao);
+        }
+
+
+        dbRef.updateChildren(objeto);
         return true;
     }
 

@@ -20,7 +20,7 @@ public class VisualizarPublicacaoActivity extends AppCompatActivity {
 
     CircleImageView imagePerfil;
     ImageView imagePublicacaoSelecionada;
-    TextView textNomePublicacao, textQtdCurtidas, textDescricao, textVisualizarComentarios;
+    TextView textNomePublicacao, textQtdCurtidas, textDescricao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,6 @@ public class VisualizarPublicacaoActivity extends AppCompatActivity {
         imagePublicacaoSelecionada = findViewById(R.id.imagePublicacaoSelecionada);
         textQtdCurtidas = findViewById(R.id.textQtdCurtidasPublicacao);
         textDescricao = findViewById(R.id.textDescricaoPublicacao);
-        textVisualizarComentarios = findViewById(R.id.textVisualizarComentariosPublicacao);
         textNomePublicacao = findViewById(R.id.textNomePublicacao);
 
     }

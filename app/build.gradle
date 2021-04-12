@@ -59,6 +59,8 @@ dependencies {
     //dependencias da Biblioteca android universal image loader
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
+    //dependencias like button
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 
 }
 
