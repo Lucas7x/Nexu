@@ -26,7 +26,7 @@ public class Comentario {
         comentarios
             id_publicacao
                 id_comentario
-                    id_usuario
+                    comentario
 
          */
         DatabaseReference comentariosRef = ConfiguracaoFirebase.getFirebaseDatabase()
