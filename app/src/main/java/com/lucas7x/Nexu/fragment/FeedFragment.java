@@ -63,6 +63,8 @@ public class FeedFragment extends Fragment {
 
     private void listarFeed() {
 
+        listaFeed.clear();
+
         valueEventListenerFeed = feedRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

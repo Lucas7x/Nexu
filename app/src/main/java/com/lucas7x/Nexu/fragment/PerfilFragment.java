@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -90,32 +91,6 @@ public class PerfilFragment extends Fragment {
         //configurações dos componentes
         inicializarComponentes(view);
 
-
-
-        //recupera usuario logado
-        //recuperar foto do usuario selecionado
-        String caminhoFoto = usuarioLogado.getCaminhoFoto();
-
-        if(caminhoFoto != null) {
-            Uri url = Uri.parse(caminhoFoto);
-            Glide.with(getActivity())
-                    .load(url)
-                    .into(imagePerfil);
-        } else {
-            imagePerfil.setImageResource(R.drawable.avatar);
-        }
-
-        /*FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
-        //pega imagem do perfil e mostra no imageview
-        Uri url = usuarioPerfil.getPhotoUrl();
-        if(url != null) {
-            Glide.with(PerfilFragment.this)
-                    .load(url)
-                    .into(imagePerfil);
-        } else {
-            imagePerfil.setImageResource(R.drawable.avatar);
-        }*/
-
         //abre tela para editar o perfil
         buttonPerfilEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +99,9 @@ public class PerfilFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+
+        //setSupportActionBar(toolbar);
 
         progressPerfil.setVisibility(View.GONE);
 
@@ -154,12 +132,43 @@ public class PerfilFragment extends Fragment {
         startActivity(i);
     }
 
+
+    private void recuperarFotoUsuario() {
+        usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
+        //recuperar foto do usuario selecionado
+        String caminhoFoto = usuarioLogado.getCaminhoFoto();
+
+        if(caminhoFoto != null) {
+            Uri url = Uri.parse(caminhoFoto);
+            Glide.with(getActivity())
+                    .load(url)
+                    .into(imagePerfil);
+        } else {
+            imagePerfil.setImageResource(R.drawable.avatar);
+        }
+    }
+
+    private void recuperarNomeUsuario() {
+        usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
+        //configurar a toolbar
+        Toolbar toolbar = getActivity().findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle(usuarioLogado.getNome());
+    }
+
+
     @Override
     public void onStart() {
         super.onStart();
 
         //recuperar dados do usuario logado
         recuperarDadosUsuarioLogado();
+
+        recuperarFotoUsuario();
+        recuperarNomeUsuario();
+
+
     }
 
     @Override

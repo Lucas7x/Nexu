@@ -89,10 +89,7 @@ public class ComentariosActivity extends AppCompatActivity {
 
     public void listarComentarios() {
 
-
-
-
-
+        listaComentarios.clear();
 
         comentariosRef = databaseRef
                 .child(HelperDB.COMENTARIOS)

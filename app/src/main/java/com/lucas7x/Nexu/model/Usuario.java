@@ -89,10 +89,12 @@ public class Usuario implements Serializable {
 
     public void atualizar() {
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
-        DatabaseReference usuariosRef = firebaseRef.child(HelperDB.USUARIOS).child(getId());
 
-        Map<String,Object> valoresUsuario = converterParaMap();
-        usuariosRef.updateChildren(valoresUsuario);
+        Map objeto = new HashMap();
+        objeto.put("/" + HelperDB.USUARIOS + "/" + getId() + "/" + HelperDB.NOME_US, getNome());
+        objeto.put("/" + HelperDB.USUARIOS + "/" + getId() + "/" + HelperDB.CAMINHO_FOTO_US, getCaminhoFoto());
+
+        firebaseRef.updateChildren(objeto);
     }
 
     public void atualizarQtdPublicacoes() {
