@@ -2,6 +2,7 @@
 
 Isso sera nossa documentação
 
-# Funcionalidades
+## Funcionalidades
 * Cadastro de usuários
+
 funcionalidade blabla
