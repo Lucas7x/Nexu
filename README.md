@@ -32,3 +32,5 @@ O Nexu é uma rede social que funciona através de uma aplicação mobile, esta 
 
 
 * Comentar postagem: o usuário poderá fazer comentários nas postagens de outros usuários.
+
+##Instalação
