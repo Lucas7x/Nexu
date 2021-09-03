@@ -33,4 +33,7 @@ O Nexu é uma rede social que funciona através de uma aplicação mobile, esta 
 
 * Comentar postagem: o usuário poderá fazer comentários nas postagens de outros usuários.
 
-## Instalação
+## Instalação e Execução
+* Para instalar essa aplicação é necessario ter Android Estudio instalado em sua maquina e configurado.
+* Após instalar o android studio, clone o repositorio em uma pasta de sua preferencia. Agora é só importa o projeto no android estudio e execulta.
+* Para roda aplicação no seu dispositivo movel é  necessario que o mesmo esteja conectado a sua maquina via porta Usb, com isso já é possivel rodar aplicação.
