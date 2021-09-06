@@ -166,7 +166,7 @@ public class PerfilFragment extends Fragment {
         recuperarDadosUsuarioLogado();
 
         recuperarFotoUsuario();
-        recuperarNomeUsuario();
+        //recuperarNomeUsuario();
 
 
     }

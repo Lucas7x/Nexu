@@ -89,6 +89,7 @@ public class FeedFragment extends Fragment {
     public void onStart() {
         super.onStart();
         listarFeed();
+
     }
 
     @Override
